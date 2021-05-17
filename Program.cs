@@ -6,8 +6,7 @@ namespace TicTacToe
         static char[,] tictactoe = new char[3, 3];
         static void Main(string[] args)
         {
-            startGame();
-            Console.ReadKey();
+            startGame();            
         }
         static void resetGame()
         {
@@ -35,11 +34,13 @@ namespace TicTacToe
                 if (che == 1 || che == 2)
                 {
                     Console.WriteLine("Player " + che + " won");
+                    playAgain();
                     break;
                 }
                 else if (che == 3)
                 {
                     Console.WriteLine("tie");
+                    playAgain();
                     break;
                 }
                 string a = Console.ReadLine();
@@ -81,6 +82,22 @@ namespace TicTacToe
                 }
             }
             return 0;
+        }
+
+        static void playAgain()
+        {
+            Console.WriteLine("Play again? (y/n)");
+            switch (Console.ReadKey().Key)
+            {
+                case ConsoleKey.Y:
+                    Console.Clear();
+                    startGame();
+                    break;
+                default:
+                    Console.WriteLine("\nTicTacToe by Arkadiusz Kozłowski\npress any key to exit");
+                    Console.ReadKey();
+                    break;
+            }
         }
     }
 }
